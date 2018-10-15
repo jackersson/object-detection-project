@@ -31,12 +31,9 @@ logging.basicConfig(level=0)
 pipelines_controller = PipelinesController()
 
 # VIDEO FILENAME
-filename = "video.mp4"
-# LABELS FILE
-labels_file = os.path.join("data/mscoco_label_map.pbtxt")
-
-# WEIGHTS
-weights = "data/models/ssdlite_mobilenet_v2_coco_2018_05_09/frozen_inference_graph.pb"
+VIDEO_FILENAME = "video.mp4"
+LABELS_FILE = os.path.join("data/mscoco_label_map.pbtxt")
+WEIGHTS = "data/models/ssdlite_mobilenet_v2_coco_2018_05_09/frozen_inference_graph.pb"
 
 # Load labels
 labels = load_labels_pbtxt(labels_file)
