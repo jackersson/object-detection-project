@@ -20,8 +20,6 @@ from src.modules import *
 
 from view import ColorPicker, OverlayOpenCV
 
-from tf_object_detection_model import TfObjectDetectionModel
-
 from utils import load_labels_pbtxt
 
 tf.logging.set_verbosity(tf.logging.ERROR)
@@ -36,11 +34,11 @@ LABELS_FILE = os.path.join("data/mscoco_label_map.pbtxt")
 WEIGHTS = "data/models/ssdlite_mobilenet_v2_coco_2018_05_09/frozen_inference_graph.pb"
 
 # Load labels
-labels = load_labels_pbtxt(labels_file)
+labels = load_labels_pbtxt(LABELS_FILE)
 
 # Create Object Detector
 object_detector = TfObjectDetectionModel(
-    weights, device='/device:GPU:0', threshold=0.1, labels=labels)
+    WEIGHTS, device='/device:GPU:0', threshold=0.1, labels=labels)
 
 # Simple bin of elements
 module_bin = Bin([
@@ -54,7 +52,7 @@ module_bin = Bin([
 modules = [ModuleInfo(module=module_bin)]
 
 # Create pipeline
-pipeline = Pipeline(source=filename, modules=modules,
+pipeline = Pipeline(source=VIDEO_FILENAME, modules=modules,
                     show_window=True, show_fps=True)
 
 # Add pipeline to PipelinesController
