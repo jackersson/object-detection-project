@@ -59,7 +59,7 @@ modules = [ModuleInfo(module=module_bin)]
 # Create pipeline
 pipeline = Pipeline(source=VIDEO_FILENAME,
                     modules=modules,
-                    show_window=True,
+                    # show_window=True,
                     show_fps=True,
                     video_record_location=os.path.join(
                        os.path.abspath("output"), "video%03d.mp4"),
