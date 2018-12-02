@@ -29,7 +29,8 @@ logging.basicConfig(level=0)
 pipelines_controller = PipelinesController()
 
 # VIDEO FILENAME
-VIDEO_FILENAME = "/home/taras/coder/projects/object-detection-project/data/videos/MOT17-09.mp4"  # "video.mp4"
+VIDEO_FILENAME = "/home/taras/coder/projects/object-detection-project/data/videos/video000.mp4" # /home/taras/coder/projects/object-detection-project/data/videos/MOT17-09.mp4"  # "video.mp4"
+VIDEO_FILENAME = "/home/taras/Documents/marichka.mp4"
 LABELS_FILE = os.path.join("data/mscoco_label_map.pbtxt")
 WEIGHTS = "data/models/ssdlite_mobilenet_v2_coco_2018_05_09/frozen_inference_graph.pb"
 
@@ -53,9 +54,6 @@ module_bin = Bin([
 # Wrap bin with ModuleInfo (so additional meta data could be added)
 modules = [ModuleInfo(module=module_bin)]
 
-# "video_record_location": os.path.join(source.out_folder, "videos/video%03d.mp4"),
-# "video_record_duration": 40,  # sec
-
 # Create pipeline
 pipeline = Pipeline(source=VIDEO_FILENAME,
                     modules=modules,
@@ -63,7 +61,7 @@ pipeline = Pipeline(source=VIDEO_FILENAME,
                     show_fps=True,
                     video_record_location=os.path.join(
                        os.path.abspath("output"), "video%03d.mp4"),
-                    video_record_duration=10,  # sec
+                    video_record_duration=60,  # sec
                     )
 
 # Add pipeline to PipelinesController
